@@ -1,0 +1,32 @@
+{
+  "cities":[{
+    "name": "Leon Mexico",
+    "latitude": -101.2570844,
+    "logintude": 21.0171113
+  },
+{
+  "name": " Bangalario India",
+  "latitude": 12.9913889,
+  "longitude": 77.7272557
+},
+{
+  "name": "Shangai China",
+  "latitude": 31.2403,
+  "longitude": 121.4170413
+},
+{
+  "name": "Gdansk Polonia",
+  "latitude": 54.3864285,
+  "longitude": 18.465285
+},
+{
+  "name": "Sidney Australia",
+  "latitude": 33.865054,
+  "longitude": 151.2000392
+},
+{
+  "name": " Paris Francia",
+  "latitude": 48.8785686,
+  "longitude":  2.2838848
+}]
+}

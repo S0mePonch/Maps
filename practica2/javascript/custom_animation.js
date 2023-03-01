@@ -10,6 +10,21 @@ import { fromLonLat } from 'ol/proj.js';
 import { getVectorContext } from 'ol/render.js';
 import { unByKey } from 'ol/Observable.js';
 
+const API_URL = "http://localhost:4000/cities";
+const xhr = new XMLHttpRequest();
+
+function onRequestHandler(){
+  if(this.readyState == 4 && this.status == 200){
+    console.log(this.response);
+    const data = JSON.parse(this.response);
+    data.map(city => addCityFeature(city.longitude,city.latitude));
+  }
+}
+
+xhr.addEventListener("load", onRequestHandler);
+xhr.open("GET",API_URL);
+xhr.send();
+
 const tileLayer = new TileLayer({
     source: new OSM({
         wrapX: false,
@@ -99,8 +114,21 @@ source.on('addfeature', function (e) {
 
 
 
-window.setInterval(addRandomFeature, 1000);
 
-window.setInterval(addRandomFeature, 1000);
-    addFixedFeature();
-    window.setInterval(addFixedFeature, 5000);
+
+// window.setInterval(addRandomFeature, 1000);
+    // addFixedFeature();
+    // window.setInterval(addFixedFeature, 5000);
+
+    function addCityFeature(longitude, latitude) {
+        addFromLonLatFeature(longitude, latitude);
+        window.setInterval(addFromLonLatFeature, 5000);
+      }
+
+      function addFromLonLatFeature(longitude, latitude) {
+        const x = longitude;
+        const y = latitude;
+        const geom = new Point(fromLonLat([x, y]));
+        const feature = new Feature(geom);
+        source.addFeature(feature);
+      }
